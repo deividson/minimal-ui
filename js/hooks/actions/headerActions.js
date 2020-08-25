@@ -1,0 +1,4 @@
+export default {
+  SET_SUBMENU: 'SET_SUBMENU',
+  UPDATE_HEADER: 'UPDATE_HEADER',
+}

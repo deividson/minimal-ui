@@ -1,0 +1,81 @@
+@mixin mnm-icon {
+  font-size: 20px;
+}
+
+.mnm-header {
+  display: flex;
+  width: 100vw;
+  height: var(--header-height);
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  @include high-contrast;
+
+  >* {
+    margin: 0 6px;
+  }
+
+  &__title {
+    flex-grow: 1;
+    max-width: 900px;
+    text-align: center;
+  }
+
+  &__info {
+    min-width: 100px;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    text-align: end;
+    justify-content: flex-end;
+    align-items: center;
+
+    &-secondary-field {
+      margin: 0 12px;
+      min-width: 150px;
+      height: 26px;    
+      line-height: 26px;
+    }
+
+    &-input {
+      & > input {
+        outline: none;
+      }
+    }
+
+    &-title {
+      text-align: center;
+    }
+  }
+
+  &-submenu {
+    border: 2px solid;
+    box-sizing: border-box;
+    max-height: 26px;
+    display: flex;
+    align-items: center;
+    user-select: none;
+    
+    &__button {
+      cursor: pointer;
+      font-size: 18px;
+      margin: -2px 6px 0 6px;
+      color: transparent;  
+      text-shadow: 0 0 0 white;
+
+      &:hover, &.disabled {
+        text-shadow: 0 0 0 gray;
+      }
+      &.disabled {
+        cursor: not-allowed;
+      }
+      &.isText {
+        font-size: 14px;
+        margin: 0 6px; 
+        font-weight: bold;
+        min-width: 30px;
+        text-align: center;
+      }
+    }
+  }
+}

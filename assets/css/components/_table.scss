@@ -1,0 +1,91 @@
+@mixin grid-cell {
+  white-space: nowrap;
+  grid-row: span 1;
+  padding: 4px;
+}
+
+.mnm-table {
+  width: fit-content;
+  &__grid {
+    display: grid;
+    grid-template-columns: 12px repeat(10, min-content) 12px;
+    row-gap: 10px;
+  }
+
+  &__title {
+    position: relative;
+    margin: 0 12px;
+    text-align: center;
+    box-sizing: content-box;
+    border: 1px solid;
+  }
+
+  &__btn {
+    position: absolute;
+    right: 4px;
+    top: 0;
+    height: 100%;
+    cursor: pointer;
+  }
+
+  &__row {
+    display: contents;
+
+    > * {
+      @include grid-cell;
+    }
+
+    &--alert {
+      background-color: rgb(245, 172, 172);
+    }
+
+    &--warning {
+      background-color: rgb(239, 250, 138);
+    }
+
+    &--high {
+      background-color: rgb(93, 255, 87);
+    }  
+  }
+
+  &__cell {
+    background-color: inherit;
+
+    &:first-child {
+      grid-column: 2;
+    }
+
+    &--alert {
+      background-color: rgb(245, 172, 172);
+    }
+
+    &--warning {
+      background-color: rgb(239, 250, 138);
+    } 
+
+    &--high {
+      background-color: rgb(93, 255, 87);
+    } 
+  }
+
+  .mnm-- {
+    &centered {
+      text-align: center;
+    }  
+    &ellipsis {
+      .mnm-table__elem-content {
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    } 
+    &odd {
+      background-color: #eee;
+    }
+    &bold {
+      font-weight: bold;
+    }
+    &medium {
+      min-width: 100px;
+    }
+  }
+}

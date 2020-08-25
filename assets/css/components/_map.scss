@@ -1,0 +1,210 @@
+.mnm-map {
+  --cell-height--h1: 40px;
+  --cell-height--h2: 20px;
+
+  &__grid {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  &__cell {
+    display: flex;
+    flex-direction: column;
+
+    &-container-content {
+      height: 100%;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;      
+    }
+
+    &.level-1 {
+      margin: 0 8px;
+    }
+
+    &.level-2 {
+      width: fit-content;
+      position: relative;
+    }
+
+    &.level-3 {
+      width: fit-content;
+      position: relative;
+    }
+
+    &-nodes {
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+      &.level-1 {
+        padding-left: 20px;
+        transition: max-height 0.2s ease-out;
+        max-height: 100%;
+      }
+      &.level-1.collapsed {
+        max-height: 0;
+      }
+    }
+
+    --line-width: 2px; // espessura da linha
+    --line-distance: 9px; // distancia entre as duas linhas
+    --line-cell-mid: 17px; // meio da cell
+
+    &-lineV {
+      position: absolute;
+      top: 0;
+      left: var(--line-distance);
+      width: var(--line-width);
+      height: calc(100% - var(--line-cell-mid));
+      background-color: black;
+    }
+
+    &-lineH {
+      position: absolute;
+      top: var(--line-cell-mid);
+      left: calc(var(--line-distance) * -1);
+      width: var(--line-distance);
+      height: var(--line-width);
+      background-color: black;
+    }
+
+    &-icon {
+      position: absolute;
+      height: 14px;
+      width: 14px;
+      border-radius: 50%;
+      top: -6px;
+      left: -8px;
+      transition: background-color .6s;
+      background-color: black;   
+      border: solid 2px black;
+      box-sizing: border-box;   
+    }
+    // https://www.freecodecamp.org/news/how-to-use-css-to-create-a-beautiful-loading-animation-for-your-app/
+    @keyframes bkg-loading {
+      0% { background-position: 100% 50%; }
+      100% { background-position: 0 50%; }
+    }
+
+    &-box {
+      border: 2px solid;
+      box-sizing: content-box;
+      position: relative;
+      cursor: pointer;
+
+      transition: box-shadow .6s;
+      transition: border-width .6s;
+
+      &.level-1 {
+        height: var(--cell-height--h1);
+        min-width: 90px;
+      }
+
+      &.level-2 {
+        width: fit-content;
+        height: var(--cell-height--h2);
+        min-width: 20px;
+        margin: 6px 0;
+      }
+
+      &.level-3 {
+        height: unset;
+        min-width: unset;
+        margin: 0;
+        border: none;
+        margin-left: 15px;
+        background-color: #212121;
+        color: white;
+        font-size: 15px;
+
+        .mnm-map__cell-content {
+          white-space: break-spaces;
+          max-width: 100px;
+        }
+      }
+    }
+
+    &-content {
+      text-align: center;
+      padding: 0 6px;
+      white-space: nowrap;
+      user-select: none;
+    }
+  }
+
+  // ======================== behaviors
+  $color-primary: #212121;
+  $color-secondary: #fff;
+  $color-primary-light: #ccc;
+  $color-primary-dark: black;
+
+  $color-success: greenyellow;
+  $color-fail: #f26969;
+  $color-warning: yellow;
+  $color-error: #eee;
+
+  .box, .ctt, .ico {
+    &-color {
+      &--primary { color: $color-primary; }
+      &--secondary { color: $color-secondary; }
+      &--primary-light { color: $color-primary-light; }
+      &--primary-dark { color: $color-primary-dark; }
+
+      &--success { color: $color-success; }
+      &--fail { color: $color-fail; }
+      &--warning { color: $color-warning; }
+      &--error { color: $color-error; }      
+    }
+    &-bkg-color {
+      &--primary { background-color: $color-primary; }
+      &--secondary { background-color: $color-secondary; }
+      &--primary-light { background-color: $color-primary-light; }
+      &--primary-dark { background-color: $color-primary-dark; }
+
+      &--success { background-color: $color-success; }
+      &--fail { background-color: $color-fail; }
+      &--warning { background-color: $color-warning; }
+      &--error { background-color: $color-error; }  
+    }
+  }
+
+  .ico {
+    &-shape {
+      &--square { border-radius: unset; }
+      &--circle { border-radius: 50%; }
+    }
+    &-visibility {
+      &--hidden { visibility: hidden;  }
+      &--visible { visibility: visible;  }
+    }
+  }
+  $anime-time: 8s;
+
+  $box-size: 20px;
+  $clip-distance: .05;
+  $clip-size: $box-size * (1 + $clip-distance * 2);
+  $path-width: 2px;
+
+  .ctt {
+    &-anim {
+      &--loading {
+        background: linear-gradient(100deg, #fff 30%, #ccc 50%, #fff 70%);
+        background-size: 400%;
+        animation: bkg-loading 1.2s ease-in-out infinite;
+      }
+    }
+  }
+
+  .box {
+    &-anim {
+      &--shining {
+        box-shadow: 2px 2px 1px grey;
+        // border-width: 3px;
+        background-color: gainsboro;
+      }
+    }
+  }
+}

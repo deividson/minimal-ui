@@ -1,0 +1,40 @@
+.mnm-sidepanel-container--opened {
+  padding-right: var(--side-panel-width);
+}
+
+.mnm-sidepanel {
+  position: relative;
+  height: 100%;
+  &.opened {
+    .mnm-sidepanel__content {
+      margin-right: 0;
+    }
+  }
+
+  &__content {
+    position: fixed;
+    top: var(--header-height);
+    right: 0;
+    height: 100%;
+    width: var(--side-panel-width);
+    margin-right: calc(-1 * var(--side-panel-width));
+    @include high-contrast--variant;
+    transition: margin ease-out .2s;
+  }
+
+  &__title {
+    margin: 6px;
+    text-align: center;
+  }
+
+  &__body {
+    margin: 12px 6px 12px 12px;
+  }
+
+  &__block {
+    margin: 12px 0;
+    &-line {
+      margin: 6px 0;
+    }
+  }
+}

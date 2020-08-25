@@ -1,0 +1,25 @@
+.mnm {
+  font-family: Arial;
+  padding: 0;
+  margin: 0;
+
+  display: block;
+  width: 100vw;
+  min-height: 100vh;
+  padding: 0;    
+
+  &-main-content {
+    min-height: calc(100vh - var(--header-height) - 24px);
+    max-width: 100%;
+    padding: 12px 6px;
+    overflow: auto;    
+    display: flex;
+    // justify-content: center;
+
+    position: relative;
+
+    & .panel-opened {
+      margin-right: var(--side-panel-width);
+    }
+  }
+}    

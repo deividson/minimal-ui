@@ -1,0 +1,25 @@
+.mnm-tooltip {
+  position: relative;
+  cursor: default;
+
+  &:hover {
+    & > .mnm-tooltiptext {
+      visibility: visible;
+    }
+  }
+
+  & .mnm-tooltiptext {
+    visibility: hidden;
+    // @include high-contrast;
+    @include default-contrast;
+    @include outline;
+
+    text-align: center;
+    padding: 2px 4px;
+    position: absolute;
+    z-index: 10;
+    top: 0;
+    left: 0;
+    min-width: 100%;
+  }
+}

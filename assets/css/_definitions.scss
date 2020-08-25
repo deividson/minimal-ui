@@ -1,0 +1,49 @@
+// Variables
+:root {
+  --header-height: 30px;
+  --side-panel-width: 300px;
+
+  --mnm-color-base: black;
+  --mnm-color-sec: white;
+
+
+  --mnm-color-primary: var(--mnm-color-base);
+  --mnm-color-secondary: var(--mnm-color-sec);
+  --mnm-color-primary-variant: hsl(0, 0%, 20%);
+  --mnm-color-secondary-variant: hsl(0, 0%, 80%);
+
+  .mnm.outlined {
+    --mnm-color-primary: var(--mnm-color-sec);
+    --mnm-color-secondary: var(--mnm-color-base);
+    --mnm-color-primary-variant: hsl(0, 0%, 80%);
+    --mnm-color-secondary-variant: hsl(0, 0%, 20%);
+  }
+  --mnm-color-border: var(--mnm-color-secondary);
+}
+
+@mixin outline {
+  border: 2px solid var(--mnm-color-primary);
+  box-sizing: border-box;
+}
+
+@mixin default-contrast {
+  background-color: var(--mnm-color-secondary);
+  color: var(--mnm-color-primary);
+}
+
+@mixin high-contrast {
+  background-color: var(--mnm-color-primary);
+  color: var(--mnm-color-secondary);
+}
+
+@mixin high-contrast--variant {
+  background-color: var(--mnm-color-primary-variant);
+  color: var(--mnm-color-secondary);
+}
+
+
+// Animations
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
