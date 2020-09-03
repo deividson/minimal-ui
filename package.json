@@ -1,0 +1,23 @@
+{
+  "name": "minimal-ui",
+  "version": "1.0.0",
+  "description": "Minimalist UI Lib",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/deividson/minimal.git"
+  },
+  "keywords": [
+    "ui",
+    "lib"
+  ],
+  "author": "Deividson M. Goulart",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/deividson/minimal/issues"
+  },
+  "homepage": "https://github.com/deividson/minimal#readme"
+}
