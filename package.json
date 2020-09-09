@@ -1,10 +1,18 @@
 {
-  "name": "minimal-ui",
+  "name": "@deividson/minimal-ui",
+  "amdName": "@deividson/minimalUI",
   "version": "1.0.0",
   "description": "Minimalist UI Lib",
-  "main": "index.js",
+  "private": true,
+  "main": "./dist/minimal-ui.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "npm-run-all --parallel build:*",
+    "build:core": "webpack",
+    "build:components": "microbundle build --raw --cwd components",
+    "watch": "npm-run-all --parallel watch:*",
+    "watch:core": "NODE_ENV=development webpack --watch",
+    "watch:components": "microbundle watch --raw --format cjs --cwd components"
   },
   "repository": {
     "type": "git",
@@ -19,5 +27,44 @@
   "bugs": {
     "url": "https://github.com/deividson/minimal-ui/issues"
   },
-  "homepage": "https://github.com/deividson/minimal-ui#readme"
+  "homepage": "https://github.com/deividson/minimal-ui#readme",
+  "devDependencies": {
+    "@babel/core": "^7.9.6",
+    "@babel/plugin-proposal-class-properties": "^7.8.3",
+    "@babel/plugin-proposal-export-default-from": "^7.10.4",
+    "@babel/plugin-transform-react-jsx": "^7.9.4",
+    "@babel/plugin-transform-runtime": "^7.9.6",
+    "@babel/preset-env": "^7.9.6",
+    "babel-eslint": "^10.1.0",
+    "babel-loader": "^8.1.0",
+    "clean-webpack-plugin": "^3.0.0",
+    "css-loader": "^3.5.3",
+    "eslint": "^7.2.0",
+    "eslint-config-airbnb": "^18.1.0",
+    "eslint-import-resolver-alias": "^1.1.2",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.20.0",
+    "eslint-plugin-react-hooks": "^4.0.4",
+    "fibers": "^5.0.0",
+    "idb": "^5.0.3",
+    "microbundle": "^0.12.3",
+    "mini-css-extract-plugin": "^0.9.0",
+    "npm-run-all": "^4.1.5",
+    "opn": "^6.0.0",
+    "preact": "^10.4.1",
+    "sass": "^1.26.5",
+    "sass-loader": "^8.0.2",
+    "style-loader": "^1.2.1",
+    "terser-webpack-plugin": "^3.0.1",
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12"
+  },
+  "files": [
+    "dist/*",
+    "src",
+    "components/dist",
+    "components/src",
+    "components/package.json"
+  ]
 }

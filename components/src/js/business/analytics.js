@@ -1,4 +1,3 @@
-
 const GA_HITS = {
   SCREEN_VIEW: 'screen_view',
   PAGE_VIEW: 'page_view',

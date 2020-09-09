@@ -1,0 +1,44 @@
+{
+  "parser": "babel-eslint",
+  "extends": [
+    "airbnb",
+    "airbnb/hooks"
+  ],
+  "env": {
+    "node": true,
+    "browser": true,
+    "jest": true
+  },
+  "settings": {
+    "react": {
+      "pragma": "h"
+    },
+    // "import/resolver": {
+    //   "minimal-ui": { "someConfig": "src/externals/minimal/js/" }
+      // "webpack": {
+      //   "config": "webpack/index.js"
+      // }
+    // }
+    // "import/resolver": {
+    //   "alias": [
+    //     ["minimal-ui", "@deividson/minimal-ui/src/"]
+    //   ]
+    // }
+  },
+  "globals": {
+    "gtag": true
+  },
+  "rules": {
+    "import/no-extraneous-dependencies": ["error", {"devDependencies": ["./tests/**/*.js", "./jest/**/*.js", "./webpack/**/*.js", "./**/*.acceptance.js", "./**/*.test.js"]}],
+    "max-len": "off",
+    "no-underscore-dangle": [2, { "allowAfterThis": true }],
+    "no-plusplus": "off",
+    "no-return-await": "off",
+    "semi": ["error", "never"],
+    "react/react-in-jsx-scope": "off",
+    "react/jsx-filename-extension": "off",
+    "react/no-unknown-property": "off",
+    "react/jsx-props-no-spreading": "off",
+    "react/prop-types": "off"
+  }
+}

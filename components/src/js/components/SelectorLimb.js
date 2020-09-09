@@ -5,12 +5,9 @@ const ConnectSelector = (ComposedComponent, options) => (
   (props) => {
     const { label, propToCheck, items } = options
     const { onSelect } = props
-    console.log('===[selector]', props, options)
-
 
     const renderSelector = () => {
-      
-      const onClickCell = (cell, state) => {
+      const onClickCell = (cell) => {
         if (cell.name && onSelect) {
           onSelect(cell.name)
         }
@@ -29,7 +26,7 @@ const ConnectSelector = (ComposedComponent, options) => (
         </Map>
       )
     }
-    
+
     const renderComposed = () => (<ComposedComponent {...props}/>)
 
     let propRequired = props[propToCheck]

@@ -40,10 +40,3 @@
   background-color: var(--mnm-color-primary-variant);
   color: var(--mnm-color-secondary);
 }
-
-
-// Animations
-@keyframes fadeIn {
-  0% { opacity: 0; }
-  100% { opacity: 1; }
-}
