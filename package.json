@@ -68,7 +68,7 @@
     "src",
     "utils/dist",
     "utils/src",
-    "utils/package.json",    
+    "utils/package.json",
     "components/dist",
     "components/src",
     "components/package.json"

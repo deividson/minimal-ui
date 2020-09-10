@@ -3,7 +3,7 @@ import {
   useEffect, useReducer, useContext,
 } from 'preact/hooks'
 
-import { getPageData, updatePageData, funciona } from '@deividson/minimal-ui/utils'
+import { indexedDB } from '@deividson/minimal-ui/utils'
 import { HeaderContext } from '../hooks/context/headerContext'
 import pageReducer from '../hooks/reducers/pageReducer'
 import actions from '../hooks/actions/pageActions'
@@ -21,8 +21,7 @@ const isPageStatus = (pageStatus, status) => (
 
 const pageHoc = (WrappedComponent, pageIdProp) => (
   (props) => {
-
-    funciona()
+    indexedDB.funciona()
 
     const initialState = {
       pageID: pageIdProp,
@@ -57,7 +56,7 @@ const pageHoc = (WrappedComponent, pageIdProp) => (
 
       sendScreenView(viewState.pageName)
 
-      getPageData(pageID).then((res) => {
+      indexedDB.getPageData(pageID).then((res) => {
         dispatchPageAct(actions.LOAD_PAGEDATA, {
           ...initialPageData,
           ...res,
@@ -66,7 +65,7 @@ const pageHoc = (WrappedComponent, pageIdProp) => (
     }
 
     const onChangePageData = (viewState) => {
-      updatePageData(pageID, viewState)
+      indexedDB.updatePageData(pageID, viewState)
       dispatchPageAct(actions.LOAD_PAGEDATA, viewState)
     }
 

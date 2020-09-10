@@ -1,1 +1,1 @@
-export * from './indexedDB'
+export * as indexedDB from './indexedDB'
