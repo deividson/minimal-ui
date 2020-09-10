@@ -21,7 +21,7 @@
     // }
     // "import/resolver": {
     //   "alias": [
-    //     ["minimal-ui", "@deividson/minimal-ui/src/"]
+    //     ["minimal-ui/utils", "@deividson/minimal-ui/utils"]
     //   ]
     // }
   },

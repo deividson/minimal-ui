@@ -1,0 +1,24 @@
+{
+  "name": "@deividson/minimal-ui-utils",
+  "amdName": "@deividson/minimalUiUtils",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Minimal UI Utils",
+  "main": "dist/minimal-ui-utils.js",
+  "module": "dist/minimal-ui-utils.module.js",
+  "umd:main": "dist/minimal-ui-utils.umd.js",
+  "source": "src/index.js",
+  "license": "MIT",
+  "scripts": {
+    "build": "microbundle build --raw",
+    "dev": "microbundle watch --raw --format cjs"
+  },
+  "keywords": [
+    "utils",
+    "lib"
+  ],
+  "peerDependencies": {
+    "idb": "^5.0.3",
+    "opn": "^6.0.0"
+  }
+}

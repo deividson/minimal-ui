@@ -3,13 +3,13 @@ import {
   useEffect, useReducer, useContext,
 } from 'preact/hooks'
 
+import { getPageData, updatePageData, funciona } from '@deividson/minimal-ui/utils'
 import { HeaderContext } from '../hooks/context/headerContext'
 import pageReducer from '../hooks/reducers/pageReducer'
 import actions from '../hooks/actions/pageActions'
 import headerActions from '../hooks/actions/headerActions'
 
 import { PAGE_STATUS } from '../data/status'
-import { getPageData, updatePageData } from '../../../../js/data/indexedDB'
 import { sendScreenView } from '../business/analytics'
 import SidePanel from './SidePanel'
 
@@ -21,6 +21,9 @@ const isPageStatus = (pageStatus, status) => (
 
 const pageHoc = (WrappedComponent, pageIdProp) => (
   (props) => {
+
+    funciona()
+
     const initialState = {
       pageID: pageIdProp,
       pageStatus: PAGE_STATUS.LOADING,

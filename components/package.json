@@ -21,6 +21,7 @@
   "peerDependencies": {
     "idb": "^5.0.3",
     "opn": "^6.0.0",
-    "preact": "^10.4.1"
+    "preact": "^10.4.1",
+    "@deividson/minimal-ui": "git@github.com:deividson/minimal-ui.git"
   }
 }
