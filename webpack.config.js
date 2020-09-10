@@ -40,9 +40,7 @@ module.exports = {
         test: /\.s[ac]ss$/i,
         use: [
           // fallback to style-loader in development
-          !isProduction
-            ? { loader: 'style-loader', options: { injectType: 'styleTag' } } // injeta
-            : MiniCssExtractPlugin.loader, // extrai pra arquivo
+          MiniCssExtractPlugin.loader, // extrai pra arquivo
           'css-loader',
           {
             loader: 'sass-loader',

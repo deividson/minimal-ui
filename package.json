@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "description": "Minimalist UI Lib",
   "private": true,
-  "main": "./dist/minimal-ui.js",
+  "main": "./dist/minimal-ui.css",
   "scripts": {
     "prepare": "run-s build",
     "build": "npm-run-all --parallel build:*",
