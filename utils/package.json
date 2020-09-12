@@ -11,7 +11,7 @@
   "license": "MIT",
   "scripts": {
     "build": "microbundle build --raw",
-    "dev": "microbundle watch --raw --format cjs"
+    "watch": "microbundle watch --raw --format cjs"
   },
   "keywords": [
     "utils",

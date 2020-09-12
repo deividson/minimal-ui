@@ -2,7 +2,7 @@ import { h, createContext } from 'preact'
 import { useReducer } from 'preact/hooks'
 import headerReducer from '../reducers/headerReducer'
 
-const titleBase = 'Frameworkers DevTools'
+const titleBase = 'DevTools'
 
 const initialState = {
   title: titleBase,

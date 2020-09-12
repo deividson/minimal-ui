@@ -3,7 +3,7 @@ const path = require('path')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 // const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
-const TerserPlugin = require('terser-webpack-plugin')
+// const TerserPlugin = require('terser-webpack-plugin')
 
 const env = process.env.NODE_ENV || 'development'
 const isProduction = env === 'production'
@@ -14,7 +14,6 @@ const addOptions = {
 
 module.exports = {
   mode: env,
-  // context: path.resolve(__dirname, './src'),
   entry: {
     'minimal-ui': './src/index.js',
   },
@@ -23,11 +22,6 @@ module.exports = {
     path: path.resolve(__dirname, './dist'),
     filename: 'minimal-ui.js',
     libraryTarget: 'umd',
-  },
-  externals: {
-    preact: 'preact',
-    idb: 'idb',
-    opn: 'opn',
   },
   module: {
     rules: [
@@ -39,7 +33,6 @@ module.exports = {
       {
         test: /\.s[ac]ss$/i,
         use: [
-          // fallback to style-loader in development
           MiniCssExtractPlugin.loader, // extrai pra arquivo
           'css-loader',
           {

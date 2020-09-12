@@ -21,8 +21,6 @@ const isPageStatus = (pageStatus, status) => (
 
 const pageHoc = (WrappedComponent, pageIdProp) => (
   (props) => {
-    indexedDB.funciona()
-
     const initialState = {
       pageID: pageIdProp,
       pageStatus: PAGE_STATUS.LOADING,

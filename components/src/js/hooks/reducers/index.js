@@ -1,1 +1,1 @@
-export * as cellListReducer from './cellListReducer'
+export { default as cellListReducer } from './cellListReducer'
