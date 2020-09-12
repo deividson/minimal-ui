@@ -1,5 +1,5 @@
 export * as data from './js/data'
 export * from './js/components'
 export * from './js/atoms'
-export * from './js/business'
+export * as business from './js/business'
 export * as hooks from './js/hooks'
