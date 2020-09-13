@@ -1,7 +1,8 @@
 {
-  "name": "root",
+  "name": "@deividson/minimal-ui",
   "description": "Minimalist UI Workpaces",
   "private": true,
+  "version": "1.0.0",
   "scripts": {
     "prepare": "run-s build",
     "bootstrap": "lerna bootstrap --use-workspaces",
