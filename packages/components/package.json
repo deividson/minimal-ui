@@ -1,8 +1,7 @@
 {
-  "name": "@deividson/minimal-ui-components",
-  "amdName": "@deividson/minimalUiComponents",
+  "name": "minimal-ui-components",
+  "amdName": "minimalUiComponents",
   "version": "0.1.0",
-  "private": true,
   "description": "Minimal UI Components",
   "main": "dist/minimal-ui-components.js",
   "module": "dist/minimal-ui-components.module.js",
@@ -18,16 +17,13 @@
     "lib",
     "preact"
   ],
+  "dependencies": {
+    "utils": "*"
+  },
   "devDependencies": {
-    "idb": "^5.0.3",
-    "opn": "^6.0.0",
-    "preact": "^10.4.1",
-    "@deividson/minimal-ui": "git@github.com:deividson/minimal-ui.git"
+    "preact": "^10.4.1"
   },
   "peerDependencies": {
-    "idb": "^5.0.3",
-    "opn": "^6.0.0",
-    "preact": "^10.4.1",
-    "@deividson/minimal-ui": "git@github.com:deividson/minimal-ui.git"
+    "preact": "^10.4.1"
   }
 }

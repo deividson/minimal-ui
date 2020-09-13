@@ -1,0 +1,19 @@
+{
+  "name": "minimal-ui-style",
+  "version": "1.0.0",
+  "description": "Minimalist UI Lib",
+  "main": "dist/minimal-ui.css",
+  "source": "src/index.js",
+  "license": "MIT",
+  "repository" : {
+    "type" : "git",
+    "url": "git+ssh://git@github.com/deividson/minimal-ui.git",
+    "directory": "packages/style"
+  },   
+  "scripts": {
+    "build": "webpack"
+  },
+  "keywords": [
+    "lib"
+  ]
+}

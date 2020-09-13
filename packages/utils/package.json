@@ -1,14 +1,17 @@
 {
-  "name": "@deividson/minimal-ui-utils",
-  "amdName": "@deividson/minimalUiUtils",
+  "name": "utils",
   "version": "0.1.0",
-  "private": true,
   "description": "Minimal UI Utils",
   "main": "dist/minimal-ui-utils.js",
   "module": "dist/minimal-ui-utils.module.js",
   "umd:main": "dist/minimal-ui-utils.umd.js",
   "source": "src/index.js",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/deividson/minimal-ui.git",
+    "directory": "packages/utils"
+  },
   "scripts": {
     "build": "microbundle build --raw",
     "watch": "microbundle watch --raw --format cjs"

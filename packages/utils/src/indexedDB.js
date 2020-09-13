@@ -98,6 +98,8 @@ const updatePageData = (name, state) => update(DB_CONFIG.STORE.PAGES, name, {
   page: name,
 })
 
+const testefun = () => { console.log('======seraaaa testefun')}
+
 export {
   initDB,
   waitDB,
@@ -108,4 +110,5 @@ export {
   updatePageData,
   get,
   update,
+  testefun
 }

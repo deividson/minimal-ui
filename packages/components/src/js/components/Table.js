@@ -1,5 +1,10 @@
 import { h } from 'preact'
 
+// import Teste from 'teste'
+// console.log('========= Teste', Teste)
+// Teste()
+
+
 const buildStatusClass = (base, status, style = [], extraClasses =[], leaf = false, firstCell) => {
   const baseClass = base
   const statusClass = status ? `${baseClass}--${status}` : ''
