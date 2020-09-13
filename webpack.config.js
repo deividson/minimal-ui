@@ -14,14 +14,13 @@ const addOptions = {
 
 module.exports = {
   mode: env,
-  context: path.resolve(__dirname, './'),
   entry: {
-    'minimal-ui': path.resolve(__dirname, './src/index.js'),
+    'minimal-ui': path.resolve(__dirname, './packages/style/src/index.js'),
   },
   output: {
     library: ['minimal-ui'],
-    path: path.resolve(__dirname, './dist'),
-    filename: 'minimal-ui.js',
+    path: path.resolve(__dirname, './packages/style/dist'),
+    filename: '[name].js',
     libraryTarget: 'umd',
   },
   module: {

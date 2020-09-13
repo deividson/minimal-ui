@@ -5,11 +5,11 @@
   "main": "dist/minimal-ui.css",
   "source": "src/index.js",
   "license": "MIT",
-  "repository" : {
-    "type" : "git",
+  "repository": {
+    "type": "git",
     "url": "git+ssh://git@github.com/deividson/minimal-ui.git",
     "directory": "packages/style"
-  },   
+  },
   "scripts": {
     "prepare": "run-s build",
     "build": "webpack"
@@ -17,9 +17,8 @@
   "keywords": [
     "lib"
   ],
-  "files": [
-    "src",
-    "dist",
-    "package.json"
-  ]
+  "dependencies": {
+    "@deividson/minimal-ui-utils": "^1.0.0",
+    "utils": "^0.1.0"
+  }
 }

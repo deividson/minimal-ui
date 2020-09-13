@@ -4,6 +4,8 @@
   "version": "0.1.0",
   "description": "Minimal UI Components",
   "main": "dist/minimal-ui-components.js",
+  "module": "dist/minimal-ui-components.module.js",
+  "umd:main": "dist/minimal-ui-components.umd.js",
   "source": "src/index.js",
   "license": "MIT",
   "scripts": {
@@ -16,11 +18,12 @@
     "preact"
   ],
   "devDependencies": {
-    "preact": "^10.4.1",
-    "utils": "*"
+    "preact": "^10.4.1"
   },
   "peerDependencies": {
-    "preact": "^10.4.1",
-    "@deividson/minimal-ui": "git+ssh://git@github.com/deividson/minimal-ui.git"
+    "preact": "^10.4.1"
+  },
+  "dependencies": {
+    "utils": "^0.1.0"
   }
 }
