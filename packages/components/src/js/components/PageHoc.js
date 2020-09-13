@@ -3,7 +3,7 @@ import {
   useEffect, useReducer, useContext,
 } from 'preact/hooks'
 
-import { indexedDB } from '@deividson/minimal-ui/utils'
+import { indexedDB } from 'utils'
 import { HeaderContext } from '../hooks/context/headerContext'
 import pageReducer from '../hooks/reducers/pageReducer'
 import actions from '../hooks/actions/pageActions'
@@ -30,6 +30,10 @@ const pageHoc = (WrappedComponent, pageIdProp) => (
       panelContent: '',
       extraClass: '',
     }
+
+
+    console.log('======== na table testefun', indexedDB.testefun())
+
     let shortcutMap
     let contentWidth
 

@@ -15,7 +15,7 @@ const addOptions = {
 module.exports = {
   mode: env,
   entry: {
-    'minimal-ui': './src/index.js',
+    'minimal-ui': path.resolve(__dirname, './src/index.js'),
   },
   output: {
     library: ['minimal-ui'],
