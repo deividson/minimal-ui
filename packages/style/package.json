@@ -11,9 +11,15 @@
     "directory": "packages/style"
   },   
   "scripts": {
+    "prepare": "run-s build",
     "build": "webpack"
   },
   "keywords": [
     "lib"
+  ],
+  "files": [
+    "src",
+    "dist",
+    "package.json"
   ]
 }

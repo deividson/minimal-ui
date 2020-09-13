@@ -14,6 +14,7 @@ const addOptions = {
 
 module.exports = {
   mode: env,
+  context: path.resolve(__dirname, './'),
   entry: {
     'minimal-ui': path.resolve(__dirname, './src/index.js'),
   },

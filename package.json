@@ -1,10 +1,11 @@
 {
   "name": "@deividson/minimal-ui",
   "description": "Minimalist UI Workpaces",
-  "private": true,
   "version": "1.0.0",
+  "private": "true",
   "scripts": {
-    "prepare": "run-s build",
+    "prepare": "npm run build",
+    "postinstall": "lerna bootstrap --use-workspaces",
     "bootstrap": "lerna bootstrap --use-workspaces",
     "build": "npm-run-all --parallel build:*",
     "build:core": "webpack --config ./packages/style/webpack.config.js",
