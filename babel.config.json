@@ -4,7 +4,7 @@
       "shippedProposals": false,
       "bugfixes": false,
       "useBuiltIns": "entry",
-      "modules": false,
+      "modules": "auto",
       "corejs" : 3,
       "targets": {
         "chrome": "80",
@@ -12,7 +12,6 @@
         "node": "current"
       }
     }]],
-  "include": ["**/src/**/*.js", "**/test/**/*.js"],  
   "plugins": [
     ["@babel/plugin-transform-react-jsx", {
       "pragma": "h",

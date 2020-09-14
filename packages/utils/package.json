@@ -1,11 +1,10 @@
 {
-  "name": "utils",
+  "name": "minimal-ui-utils",
   "version": "0.1.0",
   "description": "Minimal UI Utils",
   "main": "dist/minimal-ui-utils.js",
-  "module": "dist/minimal-ui-utils.module.js",
-  "umd:main": "dist/minimal-ui-utils.umd.js",
   "source": "src/index.js",
+  "module": "src/index.js",
   "license": "MIT",
   "repository": {
     "type": "git",

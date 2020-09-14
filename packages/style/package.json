@@ -4,6 +4,7 @@
   "description": "Minimalist UI Lib",
   "main": "dist/minimal-ui.css",
   "source": "src/index.js",
+  "module": "src/index.js",
   "license": "MIT",
   "repository": {
     "type": "git",

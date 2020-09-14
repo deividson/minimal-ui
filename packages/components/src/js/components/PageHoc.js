@@ -3,7 +3,7 @@ import {
   useEffect, useReducer, useContext,
 } from 'preact/hooks'
 
-import { indexedDB } from 'utils'
+import { indexedDB } from '@deividson/minimal-ui/packages/utils'
 import { HeaderContext } from '../hooks/context/headerContext'
 import pageReducer from '../hooks/reducers/pageReducer'
 import actions from '../hooks/actions/pageActions'
