@@ -22,7 +22,7 @@ module.exports = {
     [packageName]: path.resolve(__dirname, `${packagePath}/src/index.js`),
   },
   output: {
-    // library: [packageName],
+    library: [packageName],
     path: path.resolve(__dirname, `${packagePath}/dist`),
     filename: '[name].js',
     libraryTarget: 'umd',
@@ -99,9 +99,9 @@ module.exports = {
     //     safari10: false,
     //   },
     // })],
-    splitChunks: {
-      chunks: 'all',
-    },
+    // splitChunks: {
+    //   chunks: 'all',
+    // },
   },
   ...addOptions,
 }
