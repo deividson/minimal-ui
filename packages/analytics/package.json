@@ -5,7 +5,7 @@
   "author": "Deividson M. Goulart <deividson.goulart@g.globo>",
   "homepage": "https://github.com/deividson/minimal-ui/tree/master/packages/teste#readme",
   "license": "ISC",
-  "main": "lib/teste.js",
+  "main": "lib/analytics.js",
   "directories": {
     "lib": "lib",
     "test": "__tests__"
@@ -24,7 +24,5 @@
     "url": "https://github.com/deividson/minimal-ui/issues"
   },
   "dependencies": {
-    "@deividson/minimal-ui-utils": "^1.0.0",
-    "utils": "^0.1.0"
   }
 }
