@@ -4,8 +4,6 @@
   "version": "0.1.0",
   "description": "Minimal UI Components",
   "main": "dist/minimal-ui-components.js",
-  "module": "dist/minimal-ui-components.module.js",
-  "umd:main": "dist/minimal-ui-components.umd.js",
   "source": "src/index.js",
   "license": "MIT",
   "scripts": {

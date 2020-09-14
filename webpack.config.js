@@ -6,29 +6,45 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 // const TerserPlugin = require('terser-webpack-plugin')
 
 const env = process.env.NODE_ENV || 'development'
+const project = process.env.PACKAGE || 'style'
 const isProduction = env === 'production'
 
 const addOptions = {
   devtool: !isProduction ? 'inline-source-map' : undefined,
 }
 
+const packageName = `minimal-ui-${project}`
+const packagePath = `./packages/${project}`
+
 module.exports = {
   mode: env,
   entry: {
-    'minimal-ui': path.resolve(__dirname, './packages/style/src/index.js'),
+    [packageName]: path.resolve(__dirname, `${packagePath}/src/index.js`),
   },
   output: {
-    library: ['minimal-ui'],
-    path: path.resolve(__dirname, './packages/style/dist'),
+    // library: [packageName],
+    path: path.resolve(__dirname, `${packagePath}/dist`),
     filename: '[name].js',
     libraryTarget: 'umd',
+  },
+  resolve: {
+    modules: [
+      'node_modules',
+    ],
+    extensions: ['.jsx', '.js', '.json'],
+    symlinks: true,
   },
   module: {
     rules: [
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,
-        use: 'babel-loader',
+        use: {
+          loader: require.resolve('babel-loader'),
+          // options: {
+          //   rootMode: 'upward',
+          // },
+        },
       },
       {
         test: /\.s[ac]ss$/i,
@@ -52,6 +68,7 @@ module.exports = {
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify(env),
+        PACKAGE: JSON.stringify(project),
       },
     }),
     new CleanWebpackPlugin({
