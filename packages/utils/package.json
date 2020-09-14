@@ -21,7 +21,6 @@
     "lib"
   ],
   "peerDependencies": {
-    "idb": "^5.0.3",
-    "opn": "^6.0.0"
+    "idb": "^5.0.3"
   }
 }

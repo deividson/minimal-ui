@@ -16,9 +16,5 @@
   },
   "keywords": [
     "lib"
-  ],
-  "dependencies": {
-    "@deividson/minimal-ui-utils": "^1.0.0",
-    "utils": "^0.1.0"
-  }
+  ]
 }
