@@ -3,7 +3,6 @@ import {
   useEffect, useReducer, useContext,
 } from 'preact/hooks'
 
-import { indexedDB } from '@deividson/minimal-ui/packages/utils'
 import { HeaderContext } from '../hooks/context/headerContext'
 import pageReducer from '../hooks/reducers/pageReducer'
 import actions from '../hooks/actions/pageActions'
@@ -12,6 +11,13 @@ import headerActions from '../hooks/actions/headerActions'
 import { PAGE_STATUS } from '../data/status'
 import { sendScreenView } from '../business/analytics'
 import SidePanel from './SidePanel'
+
+let indexedDB
+const utilsPromise = import('../../../utils')
+utilsPromise.then((utils) => {
+  indexedDB = utils.indexedDB
+  console.log('======== na table testefun', indexedDB.testefun())
+})
 
 const PANEL_WIDTH = 350
 
@@ -32,7 +38,6 @@ const pageHoc = (WrappedComponent, pageIdProp) => (
     }
 
 
-    console.log('======== na table testefun', indexedDB.testefun())
 
     let shortcutMap
     let contentWidth
@@ -52,11 +57,13 @@ const pageHoc = (WrappedComponent, pageIdProp) => (
       dispatch({ type: actionType, payload })
     }
 
-    const setupPage = (viewState = {}, callbacks = {}) => {
+    const setupPage = async (viewState = {}, callbacks = {}) => {
       shortcutMap = viewState.SHORTCUTS_MAP
       const initialPageData = viewState.initialPageData || {}
 
       sendScreenView(viewState.pageName)
+
+      await utilsPromise
 
       indexedDB.getPageData(pageID).then((res) => {
         dispatchPageAct(actions.LOAD_PAGEDATA, {
@@ -66,7 +73,9 @@ const pageHoc = (WrappedComponent, pageIdProp) => (
       })
     }
 
-    const onChangePageData = (viewState) => {
+    const onChangePageData = async (viewState) => {
+      await utilsPromise
+
       indexedDB.updatePageData(pageID, viewState)
       dispatchPageAct(actions.LOAD_PAGEDATA, viewState)
     }
