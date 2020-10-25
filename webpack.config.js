@@ -8,18 +8,18 @@ const TerserPlugin = require('terser-webpack-plugin')
 const env = process.env.NODE_ENV || 'development'
 const isProduction = env === 'production'
 
-const addOptions = {
-  devtool: !isProduction ? 'inline-source-map' : undefined,
-}
 module.exports = {
   mode: env,
   entry: {
     style: path.resolve(__dirname, `./src/style/index.js`)
   },
+  output: {
+    path: path.resolve(__dirname, 'dist')
+  },
   devServer: {
     contentBase: path.join(__dirname, "dist"),
     port: 3002,
-  },    
+  },
   module: {
     rules: [
       {
@@ -48,11 +48,6 @@ module.exports = {
     ],
   },
   plugins: [
-    new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: JSON.stringify(env),
-      },
-    }),
     new CleanWebpackPlugin(),
     new ModuleFederationPlugin({
       name: 'minimal_ui',
@@ -61,19 +56,14 @@ module.exports = {
       exposes: {
         './components': "./src/components",
         './utils': "./src/utils",
+        './analytics': "./src/analytics",
       },
       shared: { 
-        preact: {
-          eager: true,
-        },
-        idb: {
-          eager: true,
-        },
+        preact: { eager: true },
+        idb: { eager: true },
       }
     }),    
     new MiniCssExtractPlugin({
-      // Options similar to the same options in webpackOptions.output
-      // both options are optional
       filename: '[name].css',
       chunkFilename: '[id].css',
       disable: !isProduction,
@@ -90,5 +80,8 @@ module.exports = {
       },
     })],
   },
-  ...addOptions,
+  experiments: {
+    topLevelAwait: true,
+  },
+  devtool: !isProduction ? 'inline-source-map' : undefined,
 }

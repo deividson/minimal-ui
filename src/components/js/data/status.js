@@ -23,7 +23,7 @@ const PAGE_STATUS = {
   },
   LOADING: {
     name: 'loading',
-    description: 'Carregando',
+    description: 'Loading',
     icon: ICONS_CODES.RELOAD,
     classes: 'rotate highlight',
   },

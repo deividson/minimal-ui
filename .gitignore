@@ -124,6 +124,9 @@ psd
 thumb
 sketch
 
+# Webpack
+bundles_stats.json
+
 ### Sass ###
 .sass-cache/
 *.css.map

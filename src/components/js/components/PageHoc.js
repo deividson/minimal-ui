@@ -9,15 +9,25 @@ import actions from '../hooks/actions/pageActions'
 import headerActions from '../hooks/actions/headerActions'
 
 import { PAGE_STATUS } from '../data/status'
-import { sendScreenView } from '../business/analytics'
 import SidePanel from './SidePanel'
 
 let indexedDB
 const utilsPromise = import('../../../utils')
 utilsPromise.then((utils) => {
   indexedDB = utils.indexedDB
-  console.log('======== na table testefun', indexedDB.testefun())
 })
+
+let sendScreenView
+const analyticsPromise = import('../../../analytics')
+analyticsPromise.then((analytics) => {
+  sendScreenView = analytics.ga.sendScreenView
+})
+
+const gaSendScreenView = (pageName) => {
+  utilsPromise.then((analytics) => {
+    sendScreenView(pageName)
+  })
+}
 
 const PANEL_WIDTH = 350
 
@@ -36,8 +46,6 @@ const pageHoc = (WrappedComponent, pageIdProp) => (
       panelContent: '',
       extraClass: '',
     }
-
-
 
     let shortcutMap
     let contentWidth
@@ -61,7 +69,7 @@ const pageHoc = (WrappedComponent, pageIdProp) => (
       shortcutMap = viewState.SHORTCUTS_MAP
       const initialPageData = viewState.initialPageData || {}
 
-      sendScreenView(viewState.pageName)
+      gaSendScreenView(viewState.pageName)
 
       await utilsPromise
 
