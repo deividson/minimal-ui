@@ -13,17 +13,6 @@
     "react": {
       "pragma": "h"
     },
-    // "import/resolver": {
-    //   "minimal-ui": { "someConfig": "src/externals/minimal/js/" }
-      // "webpack": {
-      //   "config": "webpack/index.js"
-      // }
-    // }
-    // "import/resolver": {
-    //   "alias": [
-    //     ["minimal-ui/utils", "@deividson/minimal-ui/utils"]
-    //   ]
-    // }
   },
   "globals": {
     "gtag": true

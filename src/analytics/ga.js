@@ -4,7 +4,7 @@ const GA_HITS = {
 }
 
 const sendGAEvent = (action, params) => {
-  gtag('event', action, params)
+  gtag && gtag('event', action, params)
 }
 
 const sendScreenView = (name) => {
