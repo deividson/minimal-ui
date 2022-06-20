@@ -39,13 +39,8 @@ export default (state, action) => {
 
       // aplicando resultados
       general.isSelected = resultGeneral
-      cells = applyStatusToAll(state.cellsSelection, resultGeneral)
-      if (!cell) {
-        cells.push(createCell(elemId, resultCell))
-      } else {
-        const ncell = getCell(cells, elemId)
-        ncell.isSelected = resultCell
-      }
+      cells = []
+      cells.push(createCell(elemId, resultCell))
 
       return {
         ...state,
