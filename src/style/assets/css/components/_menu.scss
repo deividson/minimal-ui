@@ -59,7 +59,7 @@
   }
 
   .menu-container {
-    position: fixed;
+    position: absolute;
     @include high-contrast;
     user-select: none;
 
