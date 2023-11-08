@@ -2,8 +2,8 @@ const webpack = require('webpack')
 const path = require('path')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const { ModuleFederationPlugin } = webpack.container
-const { CleanWebpackPlugin } = require('clean-webpack-plugin')
-const TerserPlugin = require('terser-webpack-plugin')
+// const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+// const TerserPlugin = require('terser-webpack-plugin')
 
 const env = process.env.NODE_ENV || 'development'
 const isProduction = env === 'production'
@@ -14,11 +14,20 @@ module.exports = {
     style: path.resolve(__dirname, `./src/style/index.js`)
   },
   output: {
-    path: path.resolve(__dirname, 'dist')
+    path: path.resolve(__dirname, 'dist'),
+    clean: true,
   },
   devServer: {
-    contentBase: path.join(__dirname, "dist"),
+    host: '0.0.0.0',
+    allowedHosts: 'all',
     port: 3002,
+    client: {
+      logging: 'none',
+      overlay: false,
+    },
+    static: [
+      { directory: path.join(__dirname, 'dist') },
+    ],
   },
   module: {
     rules: [
@@ -38,9 +47,6 @@ module.exports = {
             loader: 'sass-loader',
             options: {
               implementation: require('sass'),
-              sassOptions: {
-                fiber: require('fibers'),
-              },
             },
           },
         ],
@@ -48,7 +54,7 @@ module.exports = {
     ],
   },
   plugins: [
-    new CleanWebpackPlugin(),
+    // new CleanWebpackPlugin(),
     new ModuleFederationPlugin({
       name: 'minimal_ui',
       library: { type: "var", name: "minimal_ui" },
@@ -66,19 +72,19 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: '[name].css',
       chunkFilename: '[id].css',
-      disable: !isProduction,
+      // disable: !isProduction,
     })
   ],
   optimization: {
     minimize: isProduction,
-    minimizer: [new TerserPlugin({
-      terserOptions: {
-        ie8: false,
-        keep_classnames: undefined,
-        keep_fnames: false,
-        safari10: false,
-      },
-    })],
+    // minimizer: [new TerserPlugin({
+    //   terserOptions: {
+    //     ie8: false,
+    //     keep_classnames: undefined,
+    //     keep_fnames: false,
+    //     safari10: false,
+    //   },
+    // })],
   },
   experiments: {
     topLevelAwait: true,
