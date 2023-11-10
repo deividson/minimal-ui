@@ -114,8 +114,8 @@ const pageHoc = (WrappedComponent, pageIdProp) => (
         type: headerActions.UPDATE_HEADER,
         payload: {
           title: headerInfo.title,
-          subMenu: {
-            key: `subMenu__${pageID}`,
+          toolbar: {
+            key: `toolbar__${pageID}`,
             buttons: headerInfo.buttons || [],
           },
           secondaryField: headerInfo.secondaryField,

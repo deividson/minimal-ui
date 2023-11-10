@@ -5,27 +5,37 @@ import { useState } from 'preact/hooks'
 
 import IconStatus from '../atoms/IconStatus'
 import Menu from './Menu'
+// import MenuOptions from '../atoms/MenuOptions'
 
-import { ICONS_CODES, PAGE_STATUS } from '../data/status'
+const ToolbarMenu = (props) => (
+  <div>
+    
+  </div>
+)
 
-const SubMenuButton = ({ btnId, name, classes, callback, icon, onHover, disabled }) => (
+const ToolbarButton = ({
+  btnId, name, classes, callback, icon, onHover, buttonType, disabled, menuOptions,
+}) => (
   <div
-    class={`mnm-header-submenu__button ${classes || ''} ${disabled ? 'disabled' : ''}`}
+    class={`mnm-header-toolbar__button ${classes || ''} ${disabled ? 'disabled' : ''}`}
     onClick={() => (disabled ? '' : callback(btnId))}
     onMouseEnter={() => onHover(true, name)}
     onMouseLeave={() => onHover(false, name)}
     role="button"
   >
     {icon}
+    {buttonType === 'menu' && (
+      <ToolbarMenu />
+    )}
   </div>
 )
 
-const SubMenu = (props) => (
-  <div class="mnm-header-submenu">
-    {props.buttons && props.buttons.map((button) => (
-      <SubMenuButton
+const ToolBar = ({ buttons, onHover }) => (
+  <div class="mnm-header-toolbar">
+    {buttons && buttons.map((button) => (
+      <ToolbarButton
         {...button}
-        onHover={(active, btnLabel) => props.onHover(active, btnLabel)}
+        onHover={(active, btnLabel) => onHover(active, btnLabel)}
       />
     ))}
   </div>
@@ -33,7 +43,7 @@ const SubMenu = (props) => (
 
 const HeaderInfo = (props) => {
   const [infoTitle, setInfoTitle] = useState('')
-  const { menu, status, secondaryField } = props
+  const { toolbar, status, secondaryField } = props
 
   const onButtonHover = (active, btnLabel) => {
     const label = active ? btnLabel : ''
@@ -52,18 +62,19 @@ const HeaderInfo = (props) => {
           </div>
         )}
       </div>
-      <SubMenu {...menu} onHover={onButtonHover} />
+      <ToolBar {...toolbar} onHover={onButtonHover} />
       <IconStatus {...status} />
     </div>
   )
 }
 
+// TODO toolbar substituiu subMenu, mantendo por compatibilidade
 export default ({
-  menuItems, title, subMenu, status, secondaryField,
+  menuItems, title, subMenu, toolbar, status, secondaryField,
 }) => (
   <div class="mnm-header">
     {menuItems && <Menu>{menuItems}</Menu>}
     <div class="mnm-header__title">{title}</div>
-    {(subMenu || status) && <HeaderInfo menu={subMenu} status={status} secondaryField={secondaryField}/>}
+    {(subMenu || toolbar || status) && <HeaderInfo toolbar={subMenu || toolbar} status={status} secondaryField={secondaryField}/>}
   </div>
 )

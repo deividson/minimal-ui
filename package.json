@@ -42,7 +42,6 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "idb": "^5.0.3",
     "mini-css-extract-plugin": "^2.7.6",
-    "preact": "^10.4.1",
     "sass": "^1.53.0",
     "sass-loader": "^13.3.2",
     "style-loader": "^3.3.1",
@@ -50,5 +49,8 @@
     "webpack-bundle-analyzer": "^4.9.1",
     "webpack-cli": "^5.0.1",
     "webpack-dev-server": "^4.15.1"
+  },
+  "dependencies": {
+    "preact": "^10.4.1"
   }
 }
