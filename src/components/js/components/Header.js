@@ -5,49 +5,69 @@ import { useState } from 'preact/hooks'
 
 import IconStatus from '../atoms/IconStatus'
 import Menu from './Menu'
-// import MenuOptions from '../atoms/MenuOptions'
+import MenuOptions from '../atoms/MenuOptions'
 
-const ToolbarMenu = (props) => (
-  <div>
-    
-  </div>
+const ToolbarMenu = ({ btnId, options, callback }) => (
+  <MenuOptions>
+    {options && options.map((menuOption) => (
+      <div
+        onClick={() => (callback(btnId, menuOption.optionId))}
+        role="button"
+      >
+        {menuOption.label}
+      </div>
+    ))}
+  </MenuOptions>
 )
 
 const ToolbarButton = ({
-  btnId, name, classes, callback, icon, onHover, buttonType, disabled, menuOptions,
+  btnId, name, classes, callback, icon, onHover, isMenu, disabled, isActive, menuOptions,
 }) => (
   <div
-    class={`mnm-header-toolbar__button ${classes || ''} ${disabled ? 'disabled' : ''}`}
-    onClick={() => (disabled ? '' : callback(btnId))}
-    onMouseEnter={() => onHover(true, name)}
-    onMouseLeave={() => onHover(false, name)}
+    class={`mnm-header-toolbar__button ${classes || ''} ${disabled ? 'disabled' : ''} ${isMenu ? 'mnm-menu' : ''}`}
+    onClick={() => (disabled || isMenu ? '' : callback(btnId))}
+    onMouseEnter={() => onHover(true, name, btnId)}
+    onMouseLeave={() => onHover(false, name, btnId)}
     role="button"
   >
     {icon}
-    {buttonType === 'menu' && (
-      <ToolbarMenu />
+    {isMenu && isActive && !disabled && (
+      <ToolbarMenu btnId={btnId} options={menuOptions} callback={callback} />
     )}
   </div>
 )
 
-const ToolBar = ({ buttons, onHover }) => (
+const Toolbar = ({ buttons, onHover, buttonActiveId, buttonActiveStatus }) => (
   <div class="mnm-header-toolbar">
     {buttons && buttons.map((button) => (
       <ToolbarButton
         {...button}
-        onHover={(active, btnLabel) => onHover(active, btnLabel)}
+        isActive={buttonActiveId === button.btnId && buttonActiveStatus}
+        isMenu={button.buttonType === 'menu'}
+        onHover={(active, btnLabel, btnId) => onHover(active, btnLabel, btnId)}
       />
     ))}
   </div>
 )
 
-const HeaderInfo = (props) => {
-  const [infoTitle, setInfoTitle] = useState('')
-  const { toolbar, status, secondaryField } = props
+const initialState = {
+  infoTitle: '',
+  buttonActiveId: '',
+  buttonActiveStatus: false,
+}
 
-  const onButtonHover = (active, btnLabel) => {
-    const label = active ? btnLabel : ''
-    setInfoTitle(label)
+const HeaderInfo = (props) => {
+  const { toolbar, status, secondaryField } = props
+  const [headerState, setHeaderState] = useState(initialState)
+
+  const { infoTitle, buttonActiveId, buttonActiveStatus } = headerState
+
+  const onButtonHover = (active, btnLabel, btnId) => {
+    setHeaderState({
+      infoTitle: active ? btnLabel : '',
+      buttonActiveId: btnId,
+      buttonActiveStatus: active,
+    })
   }
 
   const showSecField = () => secondaryField && !secondaryField.hidden
@@ -62,7 +82,12 @@ const HeaderInfo = (props) => {
           </div>
         )}
       </div>
-      <ToolBar {...toolbar} onHover={onButtonHover} />
+      <Toolbar
+        {...toolbar}
+        onHover={onButtonHover}
+        buttonActiveId={buttonActiveId}
+        buttonActiveStatus={buttonActiveStatus}
+      />
       <IconStatus {...status} />
     </div>
   )
