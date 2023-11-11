@@ -5,8 +5,6 @@
 
 .mnm-menu {
   position: relative;
-  // height: 14px;
-  // width: 22px;
   user-select: none;
 
   @include high-contrast;
@@ -57,6 +55,7 @@
     line-height: 24px;
     display: block;
     padding: 4px;
+    text-align: left;
 
     @include high-contrast;
     &:hover {
@@ -64,22 +63,22 @@
     }
   }
 
-  .menu-container {
-    position: absolute;
-    @include high-contrast;
-    user-select: none;
+  // .menu-container {
+  //   position: absolute;
+  //   @include high-contrast;
+  //   user-select: none;
 
-    div {
-      text-decoration: none;
-      line-height: 24px;
-      display: block;
-      padding: 0 6px;
+  //   div {
+  //     text-decoration: none;
+  //     line-height: 24px;
+  //     display: block;
+  //     padding: 0 6px;
   
-      &:hover {
-        background-color: var(--mnm-color-primary-variant);
-      }
-    }
-  }
+  //     &:hover {
+  //       background-color: var(--mnm-color-primary-variant);
+  //     }
+  //   }
+  // }
 
   &.opened {
     @include show-label;

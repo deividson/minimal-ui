@@ -38,9 +38,9 @@ const CellNode = (props) => {
       {
         menu && (
           <MenuOptions open={menuOpen}>
-            <div class="menu-container">
+            {/* <div class="menu-container"> */}
               {menu.options.map((op) => (<div onClick={op.callback}>{op.label}</div>))}
-            </div>
+            {/* </div> */}
           </MenuOptions>
         )
       }

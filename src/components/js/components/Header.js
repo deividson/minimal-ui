@@ -9,14 +9,17 @@ import MenuOptions from '../atoms/MenuOptions'
 
 const ToolbarMenu = ({ btnId, options, callback }) => (
   <MenuOptions>
-    {options && options.map((menuOption) => (
-      <div
-        onClick={() => (callback(btnId, menuOption.optionId))}
-        role="button"
-      >
-        {menuOption.label}
-      </div>
-    ))}
+    {/* <div class="menu-container"> */}
+      {options && options.map((menuOption) => (
+        <div
+          onClick={() => (callback(btnId, menuOption.optionId))}
+          role="button"
+          aria-label={menuOption.label}
+        >
+          {menuOption.label}
+        </div>
+      ))}
+    {/* </div> */}
   </MenuOptions>
 )
 
