@@ -1,32 +1,17 @@
 {
-  "presets": [[
-    "@babel/preset-env", {
-      "shippedProposals": false,
-      "bugfixes": false,
-      "useBuiltIns": "entry",
-      "modules": "auto",
-      "corejs" : 3,
+  "presets": [
+    ["@babel/preset-env", {
+      "loose": true,
       "targets": {
-        "chrome": "80",
         "esmodules": true,
-        "node": "current"
+        "browsers": ["last 2 versions"]
       }
-    }]],
+  }]
+  ],
   "plugins": [
     ["@babel/plugin-transform-react-jsx", {
       "pragma": "h",
       "pragmaFrag": "Fragment"
-    }],
-    ["@babel/plugin-transform-runtime",
-      {
-        "absoluteRuntime": false,
-        "corejs": false,
-        "helpers": false,
-        "regenerator": true,
-        "useESModules": true
-      }
-    ],
-    ["@babel/plugin-proposal-class-properties"],
-    ["@babel/plugin-proposal-export-default-from"]
+    }]
   ]
 }

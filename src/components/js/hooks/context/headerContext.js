@@ -6,7 +6,7 @@ const titleBase = 'DevTools'
 
 const initialState = {
   title: titleBase,
-  subMenu: { key: '', buttons: [] },
+  toolbar: { key: '', buttons: [] },
   headerStatus: { name: 'ready', icon: '' },
 }
 const HeaderContext = createContext(initialState)

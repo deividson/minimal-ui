@@ -5,39 +5,72 @@ import { useState } from 'preact/hooks'
 
 import IconStatus from '../atoms/IconStatus'
 import Menu from './Menu'
+import MenuOptions from '../atoms/MenuOptions'
 
-import { ICONS_CODES, PAGE_STATUS } from '../data/status'
+const ToolbarMenu = ({ btnId, options, callback }) => (
+  <MenuOptions>
+    {/* <div class="menu-container"> */}
+      {options && options.map((menuOption) => (
+        <div
+          onClick={() => (callback(btnId, menuOption.optionId))}
+          role="button"
+          aria-label={menuOption.label}
+        >
+          {menuOption.label}
+        </div>
+      ))}
+    {/* </div> */}
+  </MenuOptions>
+)
 
-const SubMenuButton = ({ btnId, name, classes, callback, icon, onHover, disabled }) => (
+const ToolbarButton = ({
+  btnId, name, classes, callback, icon, onHover, isMenu, disabled, isActive, menuOptions,
+}) => (
   <div
-    class={`mnm-header-submenu__button ${classes || ''} ${disabled ? 'disabled' : ''}`}
-    onClick={() => (disabled ? '' : callback(btnId))}
-    onMouseEnter={() => onHover(true, name)}
-    onMouseLeave={() => onHover(false, name)}
+    class={`mnm-header-toolbar__button ${classes || ''} ${disabled ? 'disabled' : ''} ${isMenu ? 'mnm-menu' : ''}`}
+    onClick={() => (disabled || isMenu ? '' : callback(btnId))}
+    onMouseEnter={() => onHover(true, name, btnId)}
+    onMouseLeave={() => onHover(false, name, btnId)}
     role="button"
   >
     {icon}
+    {isMenu && isActive && !disabled && (
+      <ToolbarMenu btnId={btnId} options={menuOptions} callback={callback} />
+    )}
   </div>
 )
 
-const SubMenu = (props) => (
-  <div class="mnm-header-submenu">
-    {props.buttons && props.buttons.map((button) => (
-      <SubMenuButton
+const Toolbar = ({ buttons, onHover, buttonActiveId, buttonActiveStatus }) => (
+  <div class="mnm-header-toolbar">
+    {buttons && buttons.map((button) => (
+      <ToolbarButton
         {...button}
-        onHover={(active, btnLabel) => props.onHover(active, btnLabel)}
+        isActive={buttonActiveId === button.btnId && buttonActiveStatus}
+        isMenu={button.buttonType === 'menu'}
+        onHover={(active, btnLabel, btnId) => onHover(active, btnLabel, btnId)}
       />
     ))}
   </div>
 )
 
-const HeaderInfo = (props) => {
-  const [infoTitle, setInfoTitle] = useState('')
-  const { menu, status, secondaryField } = props
+const initialState = {
+  infoTitle: '',
+  buttonActiveId: '',
+  buttonActiveStatus: false,
+}
 
-  const onButtonHover = (active, btnLabel) => {
-    const label = active ? btnLabel : ''
-    setInfoTitle(label)
+const HeaderInfo = (props) => {
+  const { toolbar, status, secondaryField } = props
+  const [headerState, setHeaderState] = useState(initialState)
+
+  const { infoTitle, buttonActiveId, buttonActiveStatus } = headerState
+
+  const onButtonHover = (active, btnLabel, btnId) => {
+    setHeaderState({
+      infoTitle: active ? btnLabel : '',
+      buttonActiveId: btnId,
+      buttonActiveStatus: active,
+    })
   }
 
   const showSecField = () => secondaryField && !secondaryField.hidden
@@ -52,18 +85,24 @@ const HeaderInfo = (props) => {
           </div>
         )}
       </div>
-      <SubMenu {...menu} onHover={onButtonHover} />
+      <Toolbar
+        {...toolbar}
+        onHover={onButtonHover}
+        buttonActiveId={buttonActiveId}
+        buttonActiveStatus={buttonActiveStatus}
+      />
       <IconStatus {...status} />
     </div>
   )
 }
 
+// TODO toolbar substituiu subMenu, mantendo por compatibilidade
 export default ({
-  menuItems, title, subMenu, status, secondaryField,
+  menuItems, title, subMenu, toolbar, status, secondaryField,
 }) => (
   <div class="mnm-header">
     {menuItems && <Menu>{menuItems}</Menu>}
     <div class="mnm-header__title">{title}</div>
-    {(subMenu || status) && <HeaderInfo menu={subMenu} status={status} secondaryField={secondaryField}/>}
+    {(subMenu || toolbar || status) && <HeaderInfo toolbar={subMenu || toolbar} status={status} secondaryField={secondaryField}/>}
   </div>
 )

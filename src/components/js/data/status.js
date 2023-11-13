@@ -6,6 +6,8 @@ const ICONS_CODES = {
   SUCCESS_FUN: String.fromCodePoint('128526'),
   MONOCLE: String.fromCodePoint('129488'),
   INFO: String.fromCharCode('8505'),
+  CLIPBOARD: String.fromCodePoint('128203'),
+  EXPORT: String.fromCodePoint('10515'), // ⤓
 }
 
 const PAGE_STATUS = {

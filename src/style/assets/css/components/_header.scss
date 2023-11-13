@@ -48,7 +48,7 @@
     }
   }
 
-  &-submenu {
+  &-toolbar {
     border: 2px solid;
     box-sizing: border-box;
     max-height: 26px;
@@ -62,7 +62,6 @@
       margin: -2px 6px 0 6px;
       color: transparent;  
       text-shadow: 0 0 0 white;
-
       &:hover, &.disabled {
         text-shadow: 0 0 0 gray;
       }
