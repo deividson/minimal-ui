@@ -43,7 +43,6 @@
   visibility: hidden;
   flex-direction: column;
   position: absolute;
-  // @include high-contrast;
   z-index: 10;
   margin: 12px 0 0 12px;
   left: 0;
@@ -62,23 +61,6 @@
       background-color: var(--mnm-color-primary-variant);
     }
   }
-
-  // .menu-container {
-  //   position: absolute;
-  //   @include high-contrast;
-  //   user-select: none;
-
-  //   div {
-  //     text-decoration: none;
-  //     line-height: 24px;
-  //     display: block;
-  //     padding: 0 6px;
-  
-  //     &:hover {
-  //       background-color: var(--mnm-color-primary-variant);
-  //     }
-  //   }
-  // }
 
   &.opened {
     @include show-label;

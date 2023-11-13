@@ -1,10 +1,6 @@
 @mixin mnm-icon {
   font-size: 20px;
 }
-// @mixin show-label {
-//   visibility: visible;
-//   animation: fadeIn .3s;
-// }
 
 .mnm-header {
   display: flex;
@@ -61,17 +57,11 @@
     user-select: none;
     
     &__button {
-      // position: relative;
       cursor: pointer;
       font-size: 18px;
       margin: -2px 6px 0 6px;
       color: transparent;  
       text-shadow: 0 0 0 white;
-      // &:hover {
-      //   .mnm-menu-options {
-      //     @include show-label;
-      //   }
-      // }
       &:hover, &.disabled {
         text-shadow: 0 0 0 gray;
       }

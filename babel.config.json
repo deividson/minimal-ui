@@ -1,17 +1,5 @@
 {
   "presets": [
-    // ["@babel/preset-env", {
-    //   "shippedProposals": false,
-    //   "bugfixes": false,
-    //   "useBuiltIns": "entry",
-    //   "modules": "auto",
-    //   "corejs" : 3,
-    //   "targets": {
-    //     "chrome": "80",
-    //     "esmodules": true,
-    //     "node": "current"
-    //   }
-    // }]
     ["@babel/preset-env", {
       "loose": true,
       "targets": {
@@ -24,17 +12,6 @@
     ["@babel/plugin-transform-react-jsx", {
       "pragma": "h",
       "pragmaFrag": "Fragment"
-    }],
-    // ["@babel/plugin-transform-runtime",
-    //   {
-    //     "absoluteRuntime": false,
-    //     "corejs": false,
-    //     "helpers": false,
-    //     "regenerator": true,
-    //     "useESModules": true
-    //   }
-    // ],
-    // ["@babel/plugin-proposal-class-properties"],
-    // ["@babel/plugin-proposal-export-default-from"]
+    }]
   ]
 }
